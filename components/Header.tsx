@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { usePathname } from "next/navigation";
 import { site, brokenGlassTestLinkProps } from "@/content/site";
 
 const navLinks = [
@@ -16,8 +15,6 @@ const navLinks = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
-  const isVariantB = pathname === "/b";
 
   return (
     <header
@@ -46,25 +43,6 @@ export default function Header() {
                 </li>
               ))}
             </ul>
-
-            <div className="inline-flex items-center rounded-[6px] border border-[rgba(15,23,42,0.14)] bg-white/55 p-[2px]">
-              <Link
-                href="/"
-                className={`rounded-[4px] px-[10px] py-[6px] text-[12px] font-semibold tracking-[0.03em] transition-colors ${
-                  !isVariantB ? "bg-[#142033] text-white" : "text-[#334155] hover:text-[#142033]"
-                }`}
-              >
-                A
-              </Link>
-              <Link
-                href="/b"
-                className={`rounded-[4px] px-[10px] py-[6px] text-[12px] font-semibold tracking-[0.03em] transition-colors ${
-                  isVariantB ? "bg-[#142033] text-white" : "text-[#334155] hover:text-[#142033]"
-                }`}
-              >
-                B
-              </Link>
-            </div>
 
             <a
               href={site.brokenGlassTestUrl}
@@ -107,28 +85,6 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
-            </div>
-            <div className="pt-4 mt-3 border-t border-[rgba(15,23,42,0.08)]">
-              <div className="inline-flex items-center rounded-[6px] border border-[rgba(15,23,42,0.14)] bg-white/55 p-[2px]">
-                <Link
-                  href="/"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`rounded-[4px] px-[10px] py-[6px] text-[12px] font-semibold tracking-[0.03em] transition-colors ${
-                    !isVariantB ? "bg-[#142033] text-white" : "text-[#334155] hover:text-[#142033]"
-                  }`}
-                >
-                  Version A
-                </Link>
-                <Link
-                  href="/b"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`rounded-[4px] px-[10px] py-[6px] text-[12px] font-semibold tracking-[0.03em] transition-colors ${
-                    isVariantB ? "bg-[#142033] text-white" : "text-[#334155] hover:text-[#142033]"
-                  }`}
-                >
-                  Version B
-                </Link>
-              </div>
             </div>
             <div className="pt-4 mt-3 border-t border-[rgba(15,23,42,0.08)]">
               <a

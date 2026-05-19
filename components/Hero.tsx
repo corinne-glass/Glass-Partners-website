@@ -4,14 +4,9 @@ import { site, brokenGlassTestLinkProps } from "@/content/site";
 
 /** Full-bleed hero with pre-graded editorial background and readability overlay. */
 export default function Hero() {
-  /**
-   * Version A: left + centre unchanged from the long-standing A gradient (bright band through 58%).
-   * From the background pole / right third onward, match HeroB `overlayReadability` strengths:
-   * B uses ~0.38 @ 54%, 0.68 @ 68%, 0.84 @ 100% — here that ramp begins after 58% so the speaker
-   * and left text plate stay as before. No image scale or crop changes.
-   */
+  /** Light left for TV/screen; clear band over presenter; text-side ramp from ~58% toward centre-right. */
   const overlayReadability =
-    "linear-gradient(90deg, rgba(7,17,35,0.96) 0%, rgba(7,17,35,0.9) 10%, rgba(7,17,35,0.7) 20%, rgba(7,17,35,0.34) 30%, rgba(7,17,35,0.08) 39%, rgba(7,17,35,0.012) 47%, rgba(7,17,35,0.01) 58%, rgba(7,17,35,0.28) 61%, rgba(7,17,35,0.48) 64%, rgba(7,17,35,0.68) 68%, rgba(7,17,35,0.74) 78%, rgba(7,17,35,0.84) 100%)";
+    "linear-gradient(90deg, rgba(7,17,35,0.9) 0%, rgba(7,17,35,0.76) 9%, rgba(7,17,35,0.52) 18%, rgba(7,17,35,0.24) 28%, rgba(7,17,35,0.05) 38%, rgba(7,17,35,0.01) 46%, rgba(7,17,35,0.01) 54%, rgba(7,17,35,0.36) 58%, rgba(7,17,35,0.56) 63%, rgba(7,17,35,0.74) 69%, rgba(7,17,35,0.87) 77%, rgba(7,17,35,0.94) 87%, rgba(7,17,35,0.97) 100%)";
 
   return (
     <section id="top" className="relative isolate overflow-hidden bg-[#0f172a]">
@@ -20,7 +15,7 @@ export default function Hero() {
           src="/hero-banner-user-upload.png"
           alt="Corinne presenting to a room"
           fill
-          className="object-cover object-[14%_54%] origin-[34%_54%] scale-[1.09] contrast-[1.04] saturate-[1.02] md:object-[18%_53%] md:origin-[36%_53%] md:scale-[1.08] lg:object-[24%_52%] lg:origin-[40%_52%] lg:scale-[1.07] xl:object-[28%_46%] xl:origin-[40%_46%] xl:scale-[1.06] 2xl:object-[30%_45%] 2xl:origin-[42%_45%] 2xl:scale-[1.06]"
+          className="object-cover object-[4%_0%] origin-[18%_0%] scale-[1.1] contrast-[1.04] saturate-[1.02] translate-x-[2%] md:object-[4%_0%] md:origin-[20%_0%] md:scale-[1.09] md:translate-x-[1.5%] lg:object-[6%_0%] lg:origin-[24%_0%] lg:scale-[1.09] lg:translate-x-[1%] xl:object-[10%_0%] xl:origin-[28%_0%] xl:scale-[1.09] xl:translate-x-[0.5%] 2xl:object-[14%_0%] 2xl:origin-[32%_0%] 2xl:scale-[1.09] 2xl:translate-x-0"
           sizes="100vw"
           priority
         />
