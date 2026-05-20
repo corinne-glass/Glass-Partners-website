@@ -15,24 +15,20 @@ export default function AboutGlassPartners() {
           What we actually do
         </h2>
 
-        <div className="mt-8 max-w-full overflow-x-auto [-webkit-overflow-scrolling:touch] sm:overflow-x-visible">
-          <p className="w-max max-w-none text-[clamp(0.625rem,0.22rem+2vw,1.45rem)] font-bold leading-[1.5] tracking-[-0.02em] text-authority whitespace-nowrap">
-            Help you take your time back. Get the payoff. Enjoy what you have built.
-          </p>
-        </div>
+        <p className="mt-8 max-w-3xl text-[1.2rem] font-bold leading-[1.5] tracking-[-0.02em] text-authority sm:text-[1.35rem] md:text-[1.45rem]">
+          Help you take your time back. Get the payoff. Enjoy what you have built.
+        </p>
 
         <p className="mt-6 max-w-3xl text-lg leading-[1.75] text-metal md:text-[1.2rem]">
           We strengthen the people system behind performance.
         </p>
 
         <div className="mt-10 max-w-3xl border-l-2 border-rebel/55 pl-5">
-          <p className="text-lg font-bold leading-[1.65] text-authority md:text-[1.2rem]">
-            Not another strategy.
-            <br />
-            Not surface-level advice.
-            <br />
-            A stronger business through a stronger people system.
-          </p>
+          <div className="space-y-3 text-lg font-bold leading-[1.5] text-authority md:text-[1.2rem]">
+            <p>Not another strategy.</p>
+            <p>Not surface-level advice.</p>
+            <p>A stronger business through a stronger people system.</p>
+          </div>
         </div>
 
         <div className="mt-10 flex justify-center sm:justify-start">

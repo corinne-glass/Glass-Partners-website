@@ -17,7 +17,7 @@ export default function AboutPage() {
       <Header />
       <main className="bg-[#e5e2d8] px-5 pb-24 pt-24 sm:px-6 lg:pb-32">
         <article className="mx-auto max-w-[1020px]">
-          <section className="border-b border-[#0E1A2B]/10 pb-18 sm:pb-24">
+          <section className="border-b border-[#0E1A2B]/10 pb-16 sm:pb-20 sm:pb-24">
             <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(220px,280px)] md:items-start">
               <div>
                 <p className="text-[12px] font-semibold tracking-[0.06em] text-[#B5332E]">
@@ -56,7 +56,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <section className="border-b border-[#0E1A2B]/10 py-18 sm:py-24">
+          <section className="border-b border-[#0E1A2B]/10 py-16 sm:py-20 sm:py-24">
             <h2 className="font-display text-[33px] leading-[1.12] tracking-[-0.02em] text-[#0E1A2B] sm:text-[40px]">
               This work is personal
             </h2>
@@ -89,14 +89,14 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <section className="border-b border-[#0E1A2B]/10 py-18 sm:py-24">
+          <section className="border-b border-[#0E1A2B]/10 py-16 sm:py-20 sm:py-24">
             <h2 className="font-display text-[33px] leading-[1.12] tracking-[-0.02em] text-[#0E1A2B] sm:text-[40px]">
               What I believe
             </h2>
             <div className="mt-10 max-w-[48rem] space-y-5 text-[17px] leading-[1.72] text-[#2C394C] sm:text-[18px]">
               <p>I believe businesses win when the people system is strong.</p>
               <p>Not in the soft sense. In the commercial sense.</p>
-              <div className="space-y-1.5">
+              <div className="space-y-3">
                 <p>When leadership is strong.</p>
                 <p>When standards are clear.</p>
                 <p>When accountability is built into the way the business runs.</p>
@@ -116,7 +116,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <section className="border-b border-[#0E1A2B]/10 py-18 sm:py-24">
+          <section className="border-b border-[#0E1A2B]/10 py-16 sm:py-20 sm:py-24">
             <h2 className="font-display text-[33px] leading-[1.12] tracking-[-0.02em] text-[#0E1A2B] sm:text-[40px]">
               Why this matters now
             </h2>
@@ -141,7 +141,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <section className="border-b border-[#0E1A2B]/10 py-18 sm:py-24">
+          <section className="border-b border-[#0E1A2B]/10 py-16 sm:py-20 sm:py-24">
             <h2 className="font-display text-[33px] leading-[1.12] tracking-[-0.02em] text-[#0E1A2B] sm:text-[40px]">
               Why I built Glass Partners
             </h2>
@@ -161,7 +161,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <section className="border-b border-[#0E1A2B]/10 py-18 sm:py-24">
+          <section className="border-b border-[#0E1A2B]/10 py-16 sm:py-20 sm:py-24">
             <h2 className="font-display text-[33px] leading-[1.12] tracking-[-0.02em] text-[#0E1A2B] sm:text-[40px]">
               The question behind the work
             </h2>
@@ -191,7 +191,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <section className="py-18 sm:py-24">
+          <section className="py-16 sm:py-20 sm:py-24">
             <h2 className="max-w-[52rem] font-display text-[33px] leading-[1.12] tracking-[-0.02em] text-[#0E1A2B] sm:text-[40px]">
               If your business knows what to do, but it is not happening, we should talk.
             </h2>
