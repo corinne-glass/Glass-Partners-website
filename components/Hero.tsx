@@ -2,8 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { site, brokenGlassTestLinkProps } from "@/content/site";
 
+/** Single crop tuned for desktop; scale steps up on ultrawide so object-cover stays consistent. */
 const heroPhotoCrop =
-  "object-cover object-[14%_14%] origin-[18%_14%] scale-[1.4] sm:object-[16%_16%] sm:origin-[20%_16%] sm:scale-[1.42] md:object-[18%_18%] md:origin-[22%_18%] md:scale-[1.44] lg:object-[20%_20%] lg:origin-[24%_20%] lg:scale-[1.48] xl:object-[22%_22%] xl:origin-[26%_22%] xl:scale-[1.52] 2xl:object-[24%_24%] 2xl:origin-[28%_24%] 2xl:scale-[1.56]";
+  "object-cover object-[18%_12%] origin-[22%_12%] scale-[1.48] md:scale-[1.52] lg:scale-[1.56] xl:scale-[1.62] 2xl:scale-[1.72]";
+
+const heroPhotoFilters = "brightness-[1.12] contrast-[1.08] saturate-[1.38]";
 
 /**
  * Split hero: photo column (~65%) + navy content panel (~35%).
@@ -12,8 +15,8 @@ const heroPhotoCrop =
 export default function Hero() {
   return (
     <section id="top" className="bg-[#0f172a] pt-[76px]">
-      <div className="w-full md:grid md:grid-cols-[13fr_7fr] md:min-h-[clamp(420px,34vw,640px)]">
-        {/* Photo — crop + cinematic filter preview (dark, desaturated, warm tint) */}
+      <div className="w-full md:grid md:grid-cols-[13fr_7fr] md:h-[560px] lg:h-[580px] xl:h-[600px] 2xl:h-[620px]">
+        {/* Photo — fixed hero heights on md+ for consistent crop local vs prod */}
         <div className="relative isolate h-[44vw] min-h-[240px] max-h-[320px] overflow-hidden sm:max-h-[360px] md:h-full md:max-h-none md:min-h-0">
           <Image
             src="/hero-banner-user-upload.png"
@@ -21,10 +24,11 @@ export default function Hero() {
             fill
             priority
             sizes="(min-width: 768px) 65vw, 100vw"
-            className={`${heroPhotoCrop} brightness-[1.12] contrast-[1.08] saturate-[1.38]`}
+            className={`${heroPhotoCrop} ${heroPhotoFilters}`}
           />
+          {/* Darker edges; presenter area stays naturally brighter (no white halo) */}
           <div
-            className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_85%_88%_at_40%_34%,rgba(10,16,28,0.04)_0%,rgba(10,16,28,0.14)_52%,rgba(10,16,28,0.26)_100%)]"
+            className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_88%_90%_at_40%_34%,rgba(10,16,28,0.02)_0%,rgba(10,16,28,0.13)_54%,rgba(10,16,28,0.3)_100%)]"
             aria-hidden
           />
           <div
@@ -32,20 +36,16 @@ export default function Hero() {
             aria-hidden
           />
           <div
-            className="pointer-events-none absolute inset-0 z-[3] bg-[radial-gradient(ellipse_72%_78%_at_40%_34%,transparent_0%,transparent_58%,rgba(7,14,26,0.28)_100%)]"
+            className="pointer-events-none absolute inset-0 z-[3] bg-[radial-gradient(ellipse_74%_80%_at_40%_34%,transparent_0%,transparent_60%,rgba(7,14,26,0.3)_100%)]"
             aria-hidden
           />
           <div
-            className="pointer-events-none absolute inset-0 z-[4] bg-[radial-gradient(ellipse_58%_64%_at_40%_32%,rgba(255,252,245,0.34)_0%,transparent_66%)] mix-blend-screen"
+            className="pointer-events-none absolute inset-0 z-[4] bg-gradient-to-tr from-[rgba(255,235,210,0.12)] via-transparent to-[rgba(180,210,255,0.08)] mix-blend-screen"
             aria-hidden
           />
+          {/* Tree saturation boost — masked, no colour cast */}
           <div
-            className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-tr from-[rgba(255,235,210,0.12)] via-transparent to-[rgba(180,210,255,0.08)] mix-blend-screen"
-            aria-hidden
-          />
-          {/* Extra saturation on window/trees only — no colour cast */}
-          <div
-            className="pointer-events-none absolute inset-0 z-[6] opacity-[0.48] mix-blend-soft-light [mask-image:radial-gradient(ellipse_58%_52%_at_76%_30%,#000_30%,transparent_75%)] [-webkit-mask-image:radial-gradient(ellipse_58%_52%_at_76%_30%,#000_30%,transparent_75%)]"
+            className="pointer-events-none absolute inset-0 z-[5] opacity-[0.48] mix-blend-soft-light [mask-image:radial-gradient(ellipse_58%_52%_at_76%_30%,#000_30%,transparent_75%)] [-webkit-mask-image:radial-gradient(ellipse_58%_52%_at_76%_30%,#000_30%,transparent_75%)]"
             aria-hidden
           >
             <Image
