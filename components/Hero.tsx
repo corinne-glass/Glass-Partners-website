@@ -2,64 +2,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { site, brokenGlassTestLinkProps } from "@/content/site";
 
-/** Mobile: tighter crop, presenter centred, no table. Desktop: shared crop with ultrawide scale steps. */
-const heroPhotoCrop =
-  "object-cover max-md:object-[16%_8%] max-md:origin-[20%_8%] max-md:scale-[1.62] md:object-[18%_12%] md:origin-[22%_12%] md:scale-[1.52] lg:scale-[1.56] xl:scale-[1.62] 2xl:scale-[1.72]";
+/** Speaking image native 1024×575 — card max width keeps display at or below source resolution. */
+const SPEAKING_ASPECT = "aspect-[1024/575]";
 
-const heroPhotoFilters = "brightness-[1.12] contrast-[1.08] saturate-[1.38]";
-
-/**
- * Split hero: photo column (~65%) + navy content panel (~35%).
- * Mobile: image band on top, content panel below.
- */
 export default function Hero() {
   return (
     <section id="top" className="bg-[#0f172a] pt-[76px]">
-      <div className="w-full md:grid md:grid-cols-[13fr_7fr] md:h-[560px] lg:h-[580px] xl:h-[600px] 2xl:h-[620px]">
-        {/* Photo */}
-        <div className="relative isolate h-[min(52vw,340px)] min-h-[268px] overflow-hidden md:h-full md:min-h-0 md:max-h-none">
-          <Image
-            src="/hero-banner-user-upload.png"
-            alt="Corinne presenting to a room"
-            fill
-            priority
-            sizes="(min-width: 768px) 65vw, 100vw"
-            className={`${heroPhotoCrop} ${heroPhotoFilters}`}
-          />
-          <div
-            className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_88%_90%_at_38%_32%,rgba(10,16,28,0.02)_0%,rgba(10,16,28,0.13)_54%,rgba(10,16,28,0.3)_100%)] md:bg-[radial-gradient(ellipse_88%_90%_at_40%_34%,rgba(10,16,28,0.02)_0%,rgba(10,16,28,0.13)_54%,rgba(10,16,28,0.3)_100%)]"
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-br from-[rgba(68,52,38,0.1)] via-transparent to-[rgba(12,20,34,0.05)] mix-blend-multiply"
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute inset-0 z-[3] bg-[radial-gradient(ellipse_74%_80%_at_38%_32%,transparent_0%,transparent_58%,rgba(7,14,26,0.3)_100%)] md:bg-[radial-gradient(ellipse_74%_80%_at_40%_34%,transparent_0%,transparent_60%,rgba(7,14,26,0.3)_100%)]"
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute inset-0 z-[4] bg-gradient-to-tr from-[rgba(255,235,210,0.1)] via-transparent to-transparent mix-blend-screen md:to-[rgba(180,210,255,0.08)]"
-            aria-hidden
-          />
-          {/* Tree saturation — desktop only */}
-          <div
-            className="pointer-events-none absolute inset-0 z-[5] hidden opacity-[0.48] mix-blend-soft-light [mask-image:radial-gradient(ellipse_58%_52%_at_76%_30%,#000_30%,transparent_75%)] [-webkit-mask-image:radial-gradient(ellipse_58%_52%_at_76%_30%,#000_30%,transparent_75%)] md:block"
-            aria-hidden
-          >
-            <Image
-              src="/hero-banner-user-upload.png"
-              alt=""
-              fill
-              sizes="(min-width: 768px) 65vw, 100vw"
-              className={`${heroPhotoCrop} brightness-[1.06] contrast-[1.05] saturate-[2.15]`}
-            />
-          </div>
-        </div>
-
-        {/* Navy content panel */}
-        <div className="relative flex flex-col justify-center bg-[#0f172a] px-5 py-8 sm:px-8 sm:py-10 md:px-8 md:py-8 lg:px-10 lg:py-10 xl:px-12 2xl:px-16">
-          <div className="relative z-10 w-full max-w-[34rem] text-left lg:max-w-[36rem] xl:max-w-[38rem]">
+      <div className="mx-auto w-full max-w-[1400px] px-5 py-10 sm:px-8 sm:py-12 md:px-10 md:py-14 lg:py-16">
+        <div className="grid items-center gap-10 md:min-h-[500px] lg:grid-cols-[minmax(0,1fr)_minmax(0,648px)] lg:gap-12 xl:gap-14">
+          {/* Copy — left */}
+          <div className="max-w-[38rem]">
             <h1 className="font-display text-[38px] font-normal leading-[1.05] tracking-[-0.03em] text-[#F7F5F2] sm:text-[42px] md:text-[56px] lg:text-[62px] xl:text-[70px]">
               <span className="mb-[0.065em] block">People.</span>
               Performance.
@@ -78,21 +30,39 @@ export default function Hero() {
 
             <p className="sr-only">{site.positioning}</p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:mt-10 md:flex-row md:flex-nowrap md:items-center md:gap-4">
+            <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
               <Link
                 href={site.startConversationPath}
-                className="inline-flex w-full items-center justify-center whitespace-nowrap rounded-[4px] bg-[#B5332E] px-5 py-3.5 text-[15px] font-semibold text-[#F7F5F2] transition-colors hover:bg-[#A6342E] md:w-auto md:px-4 md:py-[14px] md:text-[15px] lg:px-[22px] lg:py-[15px] lg:text-[16px]"
+                className="inline-flex w-full items-center justify-center whitespace-nowrap rounded-[4px] bg-[#B5332E] px-5 py-3.5 text-[15px] font-semibold text-[#F7F5F2] transition-colors hover:bg-[#A6342E] sm:w-auto sm:px-[22px] sm:py-[15px] sm:text-[16px]"
               >
                 Start a Conversation
               </Link>
               <Link
                 href={site.brokenGlassTestUrl}
                 {...brokenGlassTestLinkProps()}
-                className="inline-flex w-full items-center justify-center whitespace-nowrap rounded-[4px] border border-white/85 bg-white/[0.08] px-5 py-3.5 text-[15px] font-semibold text-[#F7F5F2] backdrop-blur-[2px] transition-colors hover:bg-white/16 md:w-auto md:px-4 md:py-[14px] md:text-[15px] lg:px-[22px] lg:py-[15px] lg:text-[16px]"
+                className="inline-flex w-full items-center justify-center whitespace-nowrap rounded-[4px] border border-white/85 bg-white/[0.08] px-5 py-3.5 text-[15px] font-semibold text-[#F7F5F2] backdrop-blur-[2px] transition-colors hover:bg-white/16 sm:w-auto sm:px-[22px] sm:py-[15px] sm:text-[16px]"
               >
                 Take the Broken Glass Test
               </Link>
             </div>
+          </div>
+
+          {/* Editorial proof card — right; speaking image at restrained size */}
+          <div className="flex justify-center lg:justify-end">
+            <figure className="w-full max-w-[min(100%,576px)] overflow-hidden rounded-[4px] border border-[#e5e2d8]/55 bg-[#f3f0e8] p-[2px] shadow-[0_20px_50px_-24px_rgba(0,0,0,0.36)] sm:max-w-[540px] lg:w-full lg:max-w-[612px] xl:max-w-[648px]">
+              <div
+                className={`relative ${SPEAKING_ASPECT} w-full overflow-hidden bg-[#e8e4da]`}
+              >
+                <Image
+                  src="/hero-banner-user-upload.png"
+                  alt="Corinne Glass presenting to a leadership team"
+                  fill
+                  priority
+                  sizes="(min-width: 1280px) 648px, (min-width: 1024px) 612px, (min-width: 640px) 540px, 90vw"
+                  className="object-cover object-[18%_10%] scale-[1.56] origin-[18%_10%] grayscale contrast-[1.12] brightness-[1.02]"
+                />
+              </div>
+            </figure>
           </div>
         </div>
       </div>
