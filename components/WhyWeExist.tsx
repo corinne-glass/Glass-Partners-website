@@ -11,14 +11,14 @@ export default function WhyWeExist() {
   return (
     <section
       id="problem"
-      className="scroll-mt-24 border-t border-white/10 bg-[#162236] px-5 py-14 sm:px-6 sm:py-16"
+      className="scroll-mt-24 border-t border-authority/10 bg-[#fcfcfa] px-5 py-14 sm:px-6 sm:py-16"
     >
       <div className="mx-auto max-w-6xl">
-        <h2 className="max-w-[52rem] font-display text-[1.85rem] font-normal leading-[1.1] tracking-[-0.02em] text-[#F7F5F2] sm:text-[2.1rem] md:text-[2.35rem] lg:text-[2.5rem]">
+        <h2 className="max-w-[52rem] font-display text-[1.85rem] font-normal leading-[1.1] tracking-[-0.02em] text-authority sm:text-[2.1rem] md:text-[2.35rem] lg:text-[2.5rem]">
           You know this should be working better.
         </h2>
 
-        <p className="mt-3 max-w-2xl text-[16px] leading-snug text-[rgba(247,245,242,0.72)] sm:mt-4 sm:text-[17px] sm:leading-relaxed">
+        <p className="mt-3 max-w-2xl text-[16px] leading-snug text-authority/75 sm:mt-4 sm:text-[17px] sm:leading-relaxed">
           The pressure shows up first in the day-to-day.
         </p>
 
@@ -27,7 +27,7 @@ export default function WhyWeExist() {
             {symptoms.map((line) => (
               <li
                 key={line}
-                className="flex gap-2.5 border-b border-white/[0.07] py-2.5 text-[16px] leading-snug text-[rgba(247,245,242,0.88)] sm:py-3 sm:text-[17px]"
+                className="flex gap-2.5 border-b border-authority/10 py-2.5 text-[16px] leading-snug text-authority sm:py-3 sm:text-[17px]"
               >
                 <span className="mt-[0.32em] h-1.5 w-1.5 shrink-0 rounded-full bg-[#B5332E]/90" aria-hidden />
                 <span>{line}</span>
