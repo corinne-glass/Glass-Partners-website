@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { DM_Serif_Display, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import { site } from "@/content/site";
+import { getSiteFromHost, siteMetadataFor } from "@/lib/domains";
 
 const dmSerif = DM_Serif_Display({
   weight: "400",
@@ -19,10 +20,25 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-export const metadata: Metadata = {
-  title: `${site.name} | ${site.positioning}`,
-  description: site.positioning,
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const headersList = headers();
+  const host = headersList.get("host") ?? "";
+  const site = getSiteFromHost(host);
+  const meta = siteMetadataFor(site);
+  const canonicalPath = headersList.get("x-canonical-path");
+
+  return {
+    metadataBase: meta.metadataBase,
+    title: {
+      default: meta.defaultTitle,
+      template: site === "personal" ? "%s | Corinne Glass" : "%s | Glass Partners",
+    },
+    description: meta.defaultDescription,
+    ...(canonicalPath
+      ? { alternates: { canonical: canonicalPath } }
+      : {}),
+  };
+}
 
 export default function RootLayout({
   children,

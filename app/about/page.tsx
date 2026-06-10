@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: `About Corinne Glass | ${site.name}`,
   description:
     "The founder story behind Glass Partners: point of view, mission, and commercial credibility.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { site } from "@/content/site";
+import { crossSiteNav } from "@/lib/domains";
 
 export default function Footer() {
+  const personal = crossSiteNav.personal;
+
   return (
     <footer className="py-14 px-5 sm:px-6 bg-authority-matte text-cloud border-t border-white/10">
       <div className="max-w-6xl mx-auto">
@@ -49,6 +52,12 @@ export default function Footer() {
             <Link href="/#newsletter" className="text-cloud-100 hover:text-white transition-colors">
               Newsletter
             </Link>
+            <a
+              href={personal.href()}
+              className="font-medium text-[#B5332E] hover:text-[#A6342E] transition-colors"
+            >
+              {personal.label}
+            </a>
           </nav>
         </div>
         <p className="mt-12 pt-8 border-t border-white/10 text-xs text-cloud-200 text-center md:text-left">

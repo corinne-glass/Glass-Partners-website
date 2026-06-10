@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import TrustStrip from "@/components/TrustStrip";
@@ -12,6 +13,13 @@ import PerformanceReset from "@/components/PerformanceReset";
 import ContactStrip from "@/components/ContactStrip";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
+import { site } from "@/content/site";
+
+export const metadata: Metadata = {
+  title: `${site.name} | ${site.positioning}`,
+  description: site.positioning,
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (

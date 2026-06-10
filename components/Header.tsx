@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { site, brokenGlassTestLinkProps } from "@/content/site";
+import { crossSiteNav } from "@/lib/domains";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -15,6 +16,7 @@ const navLinks = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const personal = crossSiteNav.personal;
 
   return (
     <header
@@ -44,6 +46,12 @@ export default function Header() {
               ))}
             </ul>
 
+            <a
+              href={personal.href()}
+              className="text-[14px] font-medium tracking-[0.02em] text-[#334155] hover:text-[#B03A32] transition-colors whitespace-nowrap"
+            >
+              {personal.label}
+            </a>
             <a
               href={site.brokenGlassTestUrl}
               {...brokenGlassTestLinkProps()}
@@ -86,6 +94,13 @@ export default function Header() {
                 </Link>
               ))}
             </div>
+            <a
+              href={personal.href()}
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-[10px] text-[14px] font-medium tracking-[0.02em] text-[#334155] hover:text-[#B03A32] transition-colors"
+            >
+              {personal.label}
+            </a>
             <div className="pt-4 mt-3 border-t border-[rgba(15,23,42,0.08)]">
               <a
                 href={site.brokenGlassTestUrl}

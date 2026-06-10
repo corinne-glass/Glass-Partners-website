@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: `Products and Services | ${site.name}`,
   description:
     "How Glass Partners strengthens the people system behind performance — diagnostics, leadership capability, talent signal, and implementation-led support.",
+  alternates: { canonical: "/products" },
 };
 
 export default function HowWeHelpPage() {
