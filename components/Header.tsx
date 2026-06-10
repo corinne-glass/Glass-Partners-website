@@ -17,6 +17,7 @@ const navLinks = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const personal = crossSiteNav.personal;
+  const businessHome = crossSiteNav.business.href();
 
   return (
     <header
@@ -24,13 +25,13 @@ export default function Header() {
     >
       <div className="max-w-[1280px] mx-auto px-[32px]">
         <div className="h-[76px] flex items-center justify-between">
-          <Link
-            href="/"
+          <a
+            href={businessHome}
             className="font-display text-[#142033] text-[26px] leading-none font-semibold tracking-[-0.022em] whitespace-nowrap hover:text-[#A6342E] transition-colors shrink-0"
             onClick={() => setMobileMenuOpen(false)}
           >
             Glass Partners
-          </Link>
+          </a>
 
           <div className="hidden lg:flex items-center flex-nowrap gap-[32px]">
             <ul className="flex items-center flex-nowrap gap-[30px]">
