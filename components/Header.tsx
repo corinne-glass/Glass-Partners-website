@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { site, brokenGlassTestLinkProps } from "@/content/site";
-import { crossSiteNav } from "@/lib/domains";
+import { BUSINESS_HOME_URL, crossSiteNav } from "@/lib/domains";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -17,7 +17,7 @@ const navLinks = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const personal = crossSiteNav.personal;
-  const businessHome = crossSiteNav.business.href();
+  const businessHome = BUSINESS_HOME_URL;
 
   return (
     <header

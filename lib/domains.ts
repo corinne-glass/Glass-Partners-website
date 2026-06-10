@@ -5,6 +5,9 @@
 export const BUSINESS_HOST = "glasspartners.com.au";
 export const PERSONAL_HOST = "corinneglass.com";
 
+/** Canonical business homepage — always use for Glass Partners nav links. */
+export const BUSINESS_HOME_URL = "https://www.glasspartners.com.au";
+
 /** Internal App Router path for the personal home (rewritten from `/` on corinneglass.com). */
 export const PERSONAL_HOME_PATH = "/personal";
 
@@ -49,8 +52,7 @@ export function getSiteOrigin(kind: SiteKind): string {
     ).replace(/\/$/, "");
   }
   return (
-    process.env.NEXT_PUBLIC_BUSINESS_SITE_URL ??
-    `https://${BUSINESS_HOST}`
+    process.env.NEXT_PUBLIC_BUSINESS_SITE_URL ?? BUSINESS_HOME_URL
   ).replace(/\/$/, "");
 }
 
@@ -63,7 +65,7 @@ export function absoluteUrl(kind: SiteKind, path = "/"): string {
 export const crossSiteNav = {
   business: {
     label: "Glass Partners",
-    href: () => absoluteUrl("business", "/"),
+    href: () => BUSINESS_HOME_URL,
     hint: "Business advisory",
   },
   personal: {

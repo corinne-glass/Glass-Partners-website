@@ -1,4 +1,4 @@
-import { crossSiteNav } from "@/lib/domains";
+import { BUSINESS_HOME_URL } from "@/lib/domains";
 
 /** Minimal header for campaign landing pages — logo only, no site nav. */
 export default function LandingHeader() {
@@ -7,7 +7,7 @@ export default function LandingHeader() {
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16">
         <div className="h-[76px] flex items-center">
           <a
-            href={crossSiteNav.business.href()}
+            href={BUSINESS_HOME_URL}
             className="font-display text-[#142033] text-[26px] leading-none font-semibold tracking-[-0.022em] whitespace-nowrap hover:text-[#A6342E] transition-colors"
           >
             Glass Partners

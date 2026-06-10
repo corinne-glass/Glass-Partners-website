@@ -1,5 +1,5 @@
 import { site } from "@/content/site";
-import { crossSiteNav } from "@/lib/domains";
+import { BUSINESS_HOME_URL } from "@/lib/domains";
 
 /** Slim footer for campaign landing pages — no site nav. */
 export default function LandingFooter() {
@@ -8,7 +8,7 @@ export default function LandingFooter() {
       <div className="max-w-[1320px] mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm">
         <p>© {new Date().getFullYear()} {site.legalName}. All rights reserved.</p>
         <a
-          href={crossSiteNav.business.href()}
+          href={BUSINESS_HOME_URL}
           className="text-[#c9c2b3] hover:text-white transition-colors"
         >
           glasspartners.com.au
