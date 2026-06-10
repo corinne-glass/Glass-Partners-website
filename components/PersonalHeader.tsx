@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { crossSiteNav } from "@/lib/domains";
+import { businessUrl, crossSiteNav, PERSONAL_PUBLIC_PATH } from "@/lib/domains";
 
 const navLinks = [
-  { href: "/connect", label: "Connect" },
-  { href: "/speaking", label: "Speaking" },
-  { href: "/podcast", label: "Podcast" },
-  { href: "/about", label: "About" },
+  { href: businessUrl("/connect"), label: "Connect", external: true },
+  { href: businessUrl("/speaking"), label: "Speaking", external: true },
+  { href: businessUrl("/podcast"), label: "Podcast", external: true },
+  { href: businessUrl("/about"), label: "About", external: true },
 ];
 
 export default function PersonalHeader() {
@@ -20,7 +20,7 @@ export default function PersonalHeader() {
       <div className="max-w-[1280px] mx-auto px-[32px]">
         <div className="h-[76px] flex items-center justify-between">
           <Link
-            href="/"
+            href={PERSONAL_PUBLIC_PATH}
             className="font-display text-[#f5f1e8] text-[26px] leading-none font-semibold tracking-[-0.022em] whitespace-nowrap hover:text-[#c2a86f] transition-colors shrink-0"
             onClick={() => setMobileMenuOpen(false)}
           >
@@ -30,13 +30,13 @@ export default function PersonalHeader() {
           <div className="hidden lg:flex items-center flex-nowrap gap-[28px]">
             <ul className="flex items-center flex-nowrap gap-[26px]">
               {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
+                <li key={link.label}>
+                  <a
                     href={link.href}
                     className="text-[14px] font-medium tracking-[0.02em] text-[#c9c2b3] hover:text-[#f5f1e8] transition-colors whitespace-nowrap"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -71,14 +71,14 @@ export default function PersonalHeader() {
           <div className="max-w-[1280px] mx-auto px-[32px] pt-4 pb-5">
             <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
-                <Link
-                  key={link.href}
+                <a
+                  key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className="py-[10px] text-[14px] font-medium text-[#c9c2b3] hover:text-[#f5f1e8] transition-colors"
                 >
                   {link.label}
-                </Link>
+                </a>
               ))}
               <a
                 href={business.href()}

@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import PersonalHeader from "@/components/PersonalHeader";
 import PersonalFooter from "@/components/PersonalFooter";
-import { crossSiteNav } from "@/lib/domains";
+import { businessUrl, crossSiteNav, PERSONAL_PUBLIC_PATH } from "@/lib/domains";
 import { site, calendlyLinkProps } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Corinne Glass | Leadership, speaking & The Glass Signal",
   description:
     "Corinne Glass — founder of Glass Partners. Speaking, podcast, and practical leadership on people, performance and profit.",
-  alternates: { canonical: "/" },
+  alternates: { canonical: PERSONAL_PUBLIC_PATH },
 };
 
 const highlights = [
@@ -35,7 +34,7 @@ const highlights = [
   },
 ];
 
-export default function PersonalHomePage() {
+export default function CorinneHomePage() {
   const business = crossSiteNav.business;
 
   return (
@@ -54,12 +53,12 @@ export default function PersonalHomePage() {
                 system behind performance — through advisory, speaking, and The Glass Signal.
               </p>
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/connect"
+                <a
+                  href={businessUrl("/connect")}
                   className="inline-flex items-center justify-center rounded-[4px] bg-[#b79a64] px-6 py-3 text-[15px] font-semibold text-[#0b1220] hover:bg-[#c2a86f] transition-colors"
                 >
                   Connect
-                </Link>
+                </a>
                 <a
                   href={site.calendlyUrl}
                   {...calendlyLinkProps()}
@@ -104,12 +103,12 @@ export default function PersonalHomePage() {
                       {item.cta} →
                     </a>
                   ) : (
-                    <Link
+                    <a
                       href={item.href}
                       className="mt-6 inline-flex items-center rounded-[4px] bg-[#b79a64] px-4 py-2 text-[14px] font-semibold text-[#0b1220] hover:bg-[#c2a86f] transition-colors w-fit"
                     >
                       {item.cta}
-                    </Link>
+                    </a>
                   )}
                 </article>
               ))}

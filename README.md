@@ -4,12 +4,12 @@ Next.js marketing site for **Glass Partners** — advisory and operating partner
 
 ## Dual domains
 
-| Domain | Home |
-|--------|------|
-| `glasspartners.com.au` | Business (`/`) |
-| `corinneglass.com` | Personal (`/` → internal `/personal` via middleware) |
+| Domain | Behaviour |
+|--------|-----------|
+| `glasspartners.com.au` | Glass Partners business site |
+| `corinneglass.com` | **301 redirect** to `glasspartners.com.au` (except `/corinne` = Corinne Glass personal page) |
 
-Cross-links: **Corinne Glass** in the business header/footer → `corinneglass.com`; **Glass Partners** on the personal site → `glasspartners.com.au`.
+Cross-links: **Corinne Glass** in the business header/footer → `corinneglass.com/corinne`; **Glass Partners** always → `glasspartners.com.au`.
 
 `metadataBase` and per-page `alternates.canonical` resolve to the active host. See **`docs/VERCEL-DNS-GLASSPARTNERS.md`** for Vercel + DNS setup (including `.com.au`).
 
@@ -18,7 +18,7 @@ Local testing: add `127.0.0.1 business.localhost` and `127.0.0.1 personal.localh
 ## Pages
 
 - **`/`** (business domain) — Glass Partners home.
-- **`/`** (personal domain) — Corinne Glass home (`app/personal/page.tsx`).
+- **`/corinne`** (on `corinneglass.com`) — Corinne Glass personal home (`app/corinne/page.tsx`).
 - **`/about`** — Corinne Glass (add headshot to `public/corinne-glass.png`).
 
 ## Environment variables

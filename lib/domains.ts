@@ -1,15 +1,20 @@
 /**
- * Dual-domain routing: glasspartners.com.au (business) · corinneglass.com (personal).
+ * Domain routing: glasspartners.com.au (business) · corinneglass.com (redirects to GP, /corinne = personal).
  */
 
 export const BUSINESS_HOST = "glasspartners.com.au";
 export const PERSONAL_HOST = "corinneglass.com";
 
-/** Canonical business homepage — always use for Glass Partners nav links. */
+/** Canonical business homepage. */
 export const BUSINESS_HOME_URL = "https://www.glasspartners.com.au";
 
-/** Internal App Router path for the personal home (rewritten from `/` on corinneglass.com). */
+/** Public path for the Corinne Glass personal page (corinneglass.com only). */
+export const PERSONAL_PUBLIC_PATH = "/corinne";
+
+/** @deprecated Legacy internal path — redirects to PERSONAL_PUBLIC_PATH */
 export const PERSONAL_HOME_PATH = "/personal";
+
+export const PERSONAL_HOME_URL = `https://${PERSONAL_HOST}${PERSONAL_PUBLIC_PATH}`;
 
 export type SiteKind = "business" | "personal";
 
@@ -56,6 +61,12 @@ export function getSiteOrigin(kind: SiteKind): string {
   ).replace(/\/$/, "");
 }
 
+export function businessUrl(path = "/", search = ""): string {
+  const base = getSiteOrigin("business");
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${base}${normalized}${search}`;
+}
+
 export function absoluteUrl(kind: SiteKind, path = "/"): string {
   const base = getSiteOrigin(kind);
   const normalized = path.startsWith("/") ? path : `/${path}`;
@@ -70,7 +81,7 @@ export const crossSiteNav = {
   },
   personal: {
     label: "Corinne Glass",
-    href: () => absoluteUrl("personal", "/"),
+    href: () => PERSONAL_HOME_URL,
     hint: "Personal site",
   },
 } as const;

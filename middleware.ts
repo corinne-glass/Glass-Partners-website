@@ -1,8 +1,13 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import {
+  BUSINESS_HOME_URL,
+  businessUrl,
   getSiteFromHost,
+  normalizeHost,
   PERSONAL_HOME_PATH,
+  PERSONAL_HOME_URL,
+  PERSONAL_PUBLIC_PATH,
 } from "@/lib/domains";
 
 function forwardSiteHeaders(
@@ -20,30 +25,64 @@ function forwardSiteHeaders(
   return requestHeaders;
 }
 
+/** 301 to GP home — local dev uses business.localhost. */
+function redirectToBusinessHome(request: NextRequest): NextResponse {
+  const host = normalizeHost(request.headers.get("host") ?? "");
+  if (host === "personal.localhost") {
+    const url = new URL(request.url);
+    url.hostname = "business.localhost";
+    url.pathname = "/";
+    return NextResponse.redirect(url, 301);
+  }
+  return NextResponse.redirect(BUSINESS_HOME_URL, 301);
+}
+
+/** 301 to same path on the business domain. */
+function redirectToBusinessPath(request: NextRequest): NextResponse {
+  const { pathname, search } = request.nextUrl;
+  const host = normalizeHost(request.headers.get("host") ?? "");
+  if (host === "personal.localhost") {
+    const url = new URL(request.url);
+    url.hostname = "business.localhost";
+    return NextResponse.redirect(url, 301);
+  }
+  return NextResponse.redirect(businessUrl(pathname, search), 301);
+}
+
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
   const site = getSiteFromHost(host);
   const { pathname } = request.nextUrl;
 
-  // corinneglass.com/ → personal home (URL stays `/`)
-  if (site === "personal" && pathname === "/") {
-    const url = request.nextUrl.clone();
-    url.pathname = PERSONAL_HOME_PATH;
-    return NextResponse.rewrite(url, {
-      request: {
-        headers: forwardSiteHeaders(request, site, { "x-canonical-path": "/" }),
-      },
-    });
+  // Corinne personal page only lives on corinneglass.com/corinne
+  if (site === "business" && (pathname === PERSONAL_PUBLIC_PATH || pathname === PERSONAL_HOME_PATH)) {
+    return NextResponse.redirect(PERSONAL_HOME_URL, 301);
   }
 
-  // Hide internal personal route on the business domain
-  if (site === "business" && pathname === PERSONAL_HOME_PATH) {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
+  if (site === "personal") {
+    // Legacy /personal → /corinne
+    if (pathname === PERSONAL_HOME_PATH) {
+      return NextResponse.redirect(new URL(PERSONAL_PUBLIC_PATH, request.url), 301);
+    }
 
-  // Normalise personal domain: /personal → /
-  if (site === "personal" && pathname === PERSONAL_HOME_PATH) {
-    return NextResponse.redirect(new URL("/", request.url));
+    // corinneglass.com/ → Glass Partners home
+    if (pathname === "/") {
+      return redirectToBusinessHome(request);
+    }
+
+    // Corinne personal page
+    if (pathname === PERSONAL_PUBLIC_PATH) {
+      return NextResponse.next({
+        request: {
+          headers: forwardSiteHeaders(request, "personal", {
+            "x-canonical-path": PERSONAL_PUBLIC_PATH,
+          }),
+        },
+      });
+    }
+
+    // All other paths on corinneglass.com → glasspartners.com.au equivalent
+    return redirectToBusinessPath(request);
   }
 
   return NextResponse.next({
