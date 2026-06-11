@@ -6,10 +6,11 @@ import WhyWeExist from "@/components/WhyWeExist";
 import AboutGlassPartners from "@/components/AboutGlassPartners";
 import WhatWeFix from "@/components/WhatWeFix";
 import WhoWeWorkWith from "@/components/WhoWeWorkWith";
+import TwoProblemsSection from "@/components/TwoProblemsSection";
+import HowGlassPartnersWorks from "@/components/HowGlassPartnersWorks";
 import CompoundsSection from "@/components/CompoundsSection";
 import ProofSection from "@/components/ProofSection";
 import BrokenGlassTest from "@/components/BrokenGlassTest";
-import PerformanceReset from "@/components/PerformanceReset";
 import ContactStrip from "@/components/ContactStrip";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
@@ -29,13 +30,14 @@ export default function Home() {
         <Hero />
         <WhyWeExist />
         <AboutGlassPartners />
+        <TwoProblemsSection />
         <WhatWeFix />
         <WhoWeWorkWith />
         <CompoundsSection />
-        <ProofSection />
+        <HowGlassPartnersWorks />
         <TrustStrip />
         <BrokenGlassTest />
-        <PerformanceReset />
+        <ProofSection />
         <Newsletter />
         <ContactStrip />
       </main>

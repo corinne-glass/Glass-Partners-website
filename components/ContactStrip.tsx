@@ -12,8 +12,8 @@ export default function ContactStrip() {
           If performance is stuck, something is off.
         </h2>
         <p className="mx-auto max-w-3xl text-lg leading-relaxed text-[rgba(255,255,255,0.9)]">
-          Glass Partners helps businesses become stronger, more adaptive, and better led by strengthening the
-          people system behind performance.
+          Glass Partners helps businesses scale by strengthening the people system that drives
+          performance.
         </p>
 
         <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">

@@ -20,7 +20,7 @@ export default function AboutGlassPartners() {
         </p>
 
         <p className="mt-6 max-w-3xl text-lg leading-[1.75] text-metal md:text-[1.2rem]">
-          We strengthen the people system behind performance.
+          We strengthen the people system that drives performance.
         </p>
 
         <div className="mt-10 max-w-3xl border-l-2 border-rebel/55 pl-5">

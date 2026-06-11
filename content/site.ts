@@ -7,7 +7,7 @@ export const site = {
   legalName: "Glass Group",
   /** Core line — footer / positioning */
   positioning:
-    "Glass Partners helps businesses scale by strengthening the people system behind performance.",
+    "Glass Partners helps businesses scale by strengthening the people system that drives performance.",
   contactEmail:
     process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "corinne@corinneglass.com",
   brokenGlassTestUrl:
