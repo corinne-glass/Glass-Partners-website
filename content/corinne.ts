@@ -15,13 +15,13 @@ export const corinne = {
     },
   },
   whereToStart: {
-    heading: "Where to start",
+    heading: "Start with the right conversation",
     cards: [
       {
         title: "Speaking",
         body: [
-          "Keynotes, panels and workshops for rooms ready to have the conversations most businesses avoid until the cost shows up.",
-          "Topics include: The Broken Glass Paradox, Human Intelligence for AI, communication, performance, capability and the people system behind growth.",
+          "For founders, leadership teams and business audiences who want a sharper conversation about performance, commitment and the people system behind growth.",
+          "Corinne speaks on The Broken Glass Paradox, Human Intelligence for AI, and the conditions that determine whether people commit, perform and carry the mission when the work gets hard.",
         ],
         cta: "View speaking topics",
         href: "/speaking",
@@ -30,19 +30,20 @@ export const corinne = {
       {
         title: "The Glass Signal",
         body: [
-          "Practical conversations on leadership, scale, AI, capability and the human conditions that shape performance.",
-          "Not leadership theatre.",
-          "Not corporate wallpaper.",
-          "The signal underneath the noise.",
+          "A podcast for people with talent and the courage to use it.",
+          "Conversations on business, leadership, growth, AI and performance — the systems, standards, decisions and human behaviour that shape what actually happens.",
+          "For people who do not just want to sound sharp. They want to become sharper.",
         ],
+        closingLineIndex: 2,
         cta: "Listen to the podcast",
         href: "/podcast",
       },
       {
         title: "Glass Partners",
         body: [
-          "Advisory and operating partner work for businesses that need their people system to match their ambition.",
-          "We strengthen leadership, clarity, capability, accountability, operating rhythm and signal — so growth does not depend on founder force or individual heroics.",
+          "For businesses that need execution to match ambition.",
+          "Glass Partners strengthens the people system behind performance: leadership, clarity, capability, accountability, operating rhythm and signal.",
+          "The work starts where the drag is showing up — founder dependency, weak follow-through, unclear standards, capability gaps or growth that feels harder than it should.",
         ],
         cta: "Explore Glass Partners",
         href: "/",
@@ -50,24 +51,30 @@ export const corinne = {
       },
     ],
   },
-  conversationHeading: "What I am building the conversation around",
+  conversationHeading: "What is becoming impossible to ignore",
   conversationCards: [
     {
-      title: "The Broken Glass Paradox",
+      id: "broken-glass-question",
+      title: "The Broken Glass question",
       paragraphs: [
         "Every business wants people who would crawl over broken glass for the mission.",
-        "Most accidentally build the conditions that make people step back.",
-        "I speak and advise on what actually creates commitment: credibility, clarity, capability, trust, standards and a system people can believe in.",
+        "The mistake is thinking conviction can be demanded.",
+        "It cannot.",
+        "It is built through credible leadership, clear standards, real ownership and a system people trust enough to back when the work gets hard.",
       ],
+      punchIndex: 2,
     },
     {
-      title: "Human Intelligence for Artificial Intelligence",
-      emphasis: ["AI will not fix incompetence.", "It will accelerate it."],
+      id: "ai-mediocrity",
+      title: "AI scales mediocrity",
       paragraphs: [
-        "I work with businesses on the human capability AI still depends on: judgement, discernment, context, ownership, communication and learning discipline.",
-        "Because the future will not belong to the businesses with the most tools.",
-        "It will belong to the businesses with the strongest human operating system.",
+        "AI will not make mediocre thinking brilliant.",
+        "It will make it faster, cleaner and easier to ship.",
+        "If the person in the driver’s seat lacks judgement, context and capability, the output may look better — but the thinking underneath has not improved.",
+        "The advantage will belong to businesses with people who can think, challenge, decide, communicate and use the tools with discipline.",
       ],
+      punchIndex: 0,
+      closingIndex: 3,
     },
   ],
 } as const;

@@ -81,7 +81,7 @@ export default function CorinneHomePage() {
           </div>
         </section>
 
-        {/* Where to start */}
+        {/* Start with the right conversation */}
         <section className="py-20 px-5 sm:px-8 lg:px-12 border-b border-white/10">
           <div className="max-w-[1240px] mx-auto">
             <h2 className="font-display text-[32px] sm:text-[40px] tracking-[-0.02em] text-[#f7f3ea]">
@@ -96,6 +96,9 @@ export default function CorinneHomePage() {
                       ? business.href()
                       : businessUrl(item.href);
 
+                const closingIndex =
+                  "closingLineIndex" in item ? item.closingLineIndex : undefined;
+
                 return (
                   <article key={item.title} className={whereCardClass}>
                     <h3 className="font-display text-[28px] leading-[1.05] text-[#f7f3ea]">
@@ -106,14 +109,14 @@ export default function CorinneHomePage() {
                         <p
                           key={paragraph}
                           className={`text-[15px] leading-[1.7] ${
-                            item.title === "The Glass Signal" && index >= 1 && index <= 2
-                              ? "font-medium text-[#f7f3ea]"
-                              : item.title === "The Glass Signal" && index === 3
-                                ? "text-[#b8aa86]"
+                            closingIndex === index
+                              ? "font-medium text-[#b8aa86]"
+                              : index === 0
+                                ? "text-[#f7f3ea]"
                                 : "text-[#c9c2b3]"
                           }`}
                         >
-                          {paragraph}
+                          {paragraph.replace("Glass Partners", business.label)}
                         </p>
                       ))}
                     </div>
@@ -127,7 +130,7 @@ export default function CorinneHomePage() {
           </div>
         </section>
 
-        {/* What I am building the conversation around */}
+        {/* What is becoming impossible to ignore */}
         <section className="py-20 px-5 sm:px-8 lg:px-12">
           <div className="max-w-[1240px] mx-auto">
             <h2 className="font-display text-[32px] sm:text-[40px] tracking-[-0.02em] text-[#f7f3ea] max-w-3xl">
@@ -135,35 +138,34 @@ export default function CorinneHomePage() {
             </h2>
             <div className="mt-10 grid gap-6 lg:grid-cols-2 lg:gap-8">
               {corinne.conversationCards.map((card) => (
-                <article key={card.title} className={conversationCardClass}>
+                <article key={card.id} className={conversationCardClass}>
                   <h3 className="font-display text-2xl font-semibold tracking-[-0.02em] text-[#F7F5F2] md:text-[1.65rem]">
                     {card.title}
                   </h3>
-                  {"emphasis" in card && card.emphasis ? (
-                    <div className="mt-5 space-y-1">
-                      {card.emphasis.map((line) => (
-                        <p
-                          key={line}
-                          className="text-[16px] font-semibold leading-relaxed text-[#B5332E]"
-                        >
-                          {line}
-                        </p>
-                      ))}
-                    </div>
-                  ) : null}
                   <div className="mt-5 space-y-4">
-                    {card.paragraphs.map((paragraph, index) => (
-                      <p
-                        key={paragraph}
-                        className={`text-[16px] leading-relaxed ${
-                          index < 2 && !("emphasis" in card)
-                            ? "font-semibold text-[#F7F5F2]"
-                            : "text-[rgba(247,245,242,0.82)]"
-                        }`}
-                      >
-                        {paragraph}
-                      </p>
-                    ))}
+                    {card.paragraphs.map((paragraph, index) => {
+                      const isPunch = "punchIndex" in card && card.punchIndex === index;
+                      const isClosing =
+                        "closingIndex" in card && card.closingIndex === index;
+                      const isLead = index === 0 && !isPunch;
+
+                      return (
+                        <p
+                          key={paragraph}
+                          className={`text-[16px] leading-relaxed ${
+                            isPunch
+                              ? "font-semibold text-[#B5332E]"
+                              : isLead
+                                ? "font-semibold text-[#F7F5F2]"
+                                : isClosing
+                                  ? "font-medium text-[#b8aa86]"
+                                  : "text-[rgba(247,245,242,0.82)]"
+                          }`}
+                        >
+                          {paragraph}
+                        </p>
+                      );
+                    })}
                   </div>
                 </article>
               ))}
