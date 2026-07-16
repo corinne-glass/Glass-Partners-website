@@ -25,25 +25,26 @@ export default function Hero() {
             </p>
 
             <p className="mt-5 text-[16px] leading-[1.65] text-[rgba(247,245,242,0.9)] sm:mt-8 sm:text-[17px] md:text-[19px]">
-              Glass Partners helps businesses scale by strengthening the people system that drives
-              performance.
+              Glass Partners helps growing businesses identify and fix the leadership, accountability and
+              capability problems weakening performance.
             </p>
 
             <p className="sr-only">{site.positioning}</p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+            <div className="mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
               <Link
                 href={site.brokenGlassTestUrl}
                 {...brokenGlassTestLinkProps()}
                 className="inline-flex w-full items-center justify-center whitespace-nowrap rounded-[4px] bg-[#B5332E] px-5 py-3.5 text-[15px] font-semibold text-[#F7F5F2] transition-colors hover:bg-[#A6342E] sm:w-auto sm:px-[22px] sm:py-[15px] sm:text-[16px]"
               >
-                Take the Broken Glass Test
+                Get My Broken Glass Score
               </Link>
               <Link
-                href={site.startConversationPath}
-                className="inline-flex w-full items-center justify-center whitespace-nowrap rounded-[4px] border border-white/85 bg-white/[0.08] px-5 py-3.5 text-[15px] font-semibold text-[#F7F5F2] backdrop-blur-[2px] transition-colors hover:bg-white/16 sm:w-auto sm:px-[22px] sm:py-[15px] sm:text-[16px]"
+                href="/products"
+                className="inline-flex w-full items-center justify-center gap-1.5 text-[15px] font-semibold tracking-wide text-[#F7F5F2]/88 transition-colors hover:text-[#F7F5F2] sm:w-auto sm:text-[16px]"
               >
-                Work with Glass Partners
+                See How We Help
+                <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>

@@ -15,13 +15,21 @@ export default function BrokenGlassTest() {
           </sup>
         </h2>
 
-        <p className="mt-6 font-display text-2xl font-medium leading-[1.28] tracking-[-0.02em] text-[#F7F5F2] md:mt-7 md:text-[1.65rem] md:leading-[1.3]">
+        <p className="mt-2.5 font-display text-lg font-medium leading-[1.3] tracking-[-0.02em] text-[#F7F5F2] md:mt-3 md:text-xl md:leading-[1.32]">
           Would your team crawl over broken glass for the mission?
         </p>
 
-        <p className="mt-6 text-lg leading-relaxed text-[rgba(247,245,242,0.82)] md:mt-7 md:text-xl">
-          The Broken Glass Test helps you see whether your people are truly behind the business — or
-          whether they are complying, coasting, protecting themselves or quietly checking out.
+        <h3 className="mt-8 font-display text-2xl font-semibold leading-[1.2] tracking-[-0.02em] text-[#F7F5F2] md:mt-9 md:text-[1.75rem]">
+          Is your people system ready for growth?
+        </h3>
+
+        <p className="mt-5 text-lg leading-relaxed text-[rgba(247,245,242,0.82)] md:text-xl">
+          Take the three-minute Broken Glass Test and get a clearer view of where leadership, clarity,
+          accountability, capability or signal may be weakening performance.
+        </p>
+
+        <p className="mt-5 text-lg leading-relaxed text-[rgba(247,245,242,0.82)] md:text-xl">
+          You will receive your score, what it may be signalling and the first issue worth examining.
         </p>
 
         <div className="mt-9 md:mt-10">
@@ -30,7 +38,7 @@ export default function BrokenGlassTest() {
             {...brokenGlassTestLinkProps()}
             className="inline-flex items-center justify-center whitespace-nowrap rounded-[4px] bg-[#B5332E] px-[22px] py-[14px] text-[16px] font-semibold text-[#F7F5F2] transition-colors hover:bg-[#A6342E]"
           >
-            Take the 3-minute test
+            Get My Broken Glass Score
           </Link>
         </div>
       </div>

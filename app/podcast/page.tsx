@@ -21,32 +21,55 @@ const contentPillars = [
   { title: "Performance", detail: "What drives sustainable outcomes across people and business." },
 ];
 
-/** Launch preview — three launch episodes only (podcast not live yet). */
-const launchEpisodes = [
-  {
-    title: "The Leadership Bottleneck You Can't Out-Hire",
-    teaser:
-      "Why growth stalls when leadership capability, accountability and operating rhythm lag behind the business.",
-    tag: "Leadership",
-  },
-  {
-    title: "Scaling Without Losing Your Standards",
-    teaser: "How to grow without letting quality, accountability and culture dilute.",
-    tag: "Growth",
-  },
-  {
-    title: "Influence in High-Stakes Rooms",
-    teaser:
-      "How to communicate with clarity, authority and commercial judgement when the stakes are high.",
-    tag: "Influence",
-  },
-] as const;
+const FEATURED_EPISODE_URL = "https://youtu.be/tc1GjrU2TmQ";
+const FEATURED_EPISODE_EMBED = "https://www.youtube.com/embed/tc1GjrU2TmQ";
 
-const platformLinks = [
-  { label: "Spotify", href: "#" },
-  { label: "Apple", href: "#" },
-  { label: "YouTube", href: "#" },
+const episodes = [
+  {
+    title: "5 Business Problems You're Misdiagnosing!",
+    teaser:
+      "The problems that look like people, process or market issues — and the leadership gaps underneath them.",
+    tag: "Growth",
+    status: "available" as const,
+    href: "https://youtu.be/MD06g1ObrEU",
+  },
+  {
+    title: "Your Business Is Stuck. Here's The Five-Step RESET",
+    teaser: "A five-step RESET for businesses that have stalled.",
+    tag: "Growth",
+    status: "recording" as const,
+  },
+  {
+    title: "Leadership Is Boring. That's Why Most Leaders Get It Wrong",
+    teaser:
+      "RESET only works when leaders repeat standards and reviews after the initial excitement disappears.",
+    tag: "Leadership",
+    status: "comingSoon" as const,
+  },
+  {
+    title: "Let Them Leave: The Cost of Keeping the Wrong People",
+    teaser:
+      "RESET reveals whether the system blocked the person or whether the person cannot or will not meet a fair standard.",
+    tag: "Leadership",
+    status: "comingSoon" as const,
+  },
+  {
+    title: "Leadership Is Sales: Stop Talking If You Want Influence",
+    teaser:
+      "Leaders must create commitment to the chosen thirty-day priority rather than simply announcing it.",
+    tag: "Influence",
+    status: "comingSoon" as const,
+  },
+  {
+    title: "Nice Leaders Create Expensive Problems",
+    teaser:
+      "A leader may provide clarity and enablement but still avoid the required follow-through.",
+    tag: "Leadership",
+    status: "comingSoon" as const,
+  },
 ];
+
+const platformLinks = [{ label: "YouTube", href: "https://www.youtube.com/@TheGlassSignalPod" }];
 
 /**
  * Authority metrics strip — removed from the page until numbers are live and approved.
@@ -102,6 +125,8 @@ export default function PodcastPage() {
                   <a
                     key={platform.label}
                     href={platform.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center rounded-[4px] border border-white/20 px-4 py-2 text-sm text-[#e3dac7] hover:bg-white/10 transition-colors"
                   >
                     {platform.label}
@@ -169,7 +194,9 @@ export default function PodcastPage() {
                 <li>- A practical framework to reset execution quality fast</li>
               </ul>
               <a
-                href="#"
+                href={FEATURED_EPISODE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-9 inline-flex items-center justify-center rounded-[4px] bg-[#b79a64] px-6 py-3 text-[15px] font-semibold text-[#0b1220] hover:bg-[#c2a86f] transition-colors"
               >
                 Listen to Episode
@@ -187,9 +214,15 @@ export default function PodcastPage() {
               </div>
               <div className="mt-5 rounded-[4px] border border-white/10 px-4 py-4">
                 <p className="text-sm uppercase tracking-[0.14em] text-[#a99671]">Player</p>
-                <p className="mt-2 text-[14px] text-[#cfc8b9]">
-                  Replace with Spotify / Apple embedded player when episode URLs are finalized.
-                </p>
+                <div className="mt-3 relative aspect-video w-full overflow-hidden rounded-[4px] bg-[#0b1220]">
+                  <iframe
+                    src={FEATURED_EPISODE_EMBED}
+                    title="Why Great Businesses Break Before They Scale"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="absolute inset-0 h-full w-full border-0"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -199,7 +232,7 @@ export default function PodcastPage() {
           <div className="max-w-[1320px] mx-auto">
             <div>
               <h2 className="font-display text-[42px] sm:text-[52px] leading-[1.02] tracking-[-0.03em]">
-                The Glass Signal is launching soon
+                Episodes
               </h2>
               <p className="mt-4 max-w-3xl text-[15px] leading-[1.65] text-[#c9c2b3]">
                 Sharp conversations and solo essays on leadership, scale, ambition and the people system behind
@@ -214,46 +247,79 @@ export default function PodcastPage() {
               ))}
             </div>
             <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {launchEpisodes.map((episode) => (
-                <article
-                  key={episode.title}
-                  className="rounded-[8px] border border-white/12 bg-[#101a2a] overflow-hidden"
-                >
-                  <div className="relative h-48 w-full overflow-hidden bg-[#0d1524]">
-                    <Image
-                      src="/the-glass-signal-cover.png"
-                      alt=""
-                      width={1024}
-                      height={1024}
-                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      className="h-full w-full object-cover object-[center_16%]"
-                      aria-hidden
-                    />
-                    <div className="absolute right-3 top-3 max-w-[calc(100%-1.5rem)]">
-                      <span className="inline-block rounded-[4px] border border-white/15 bg-[#0b1220]/75 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#e8dcc4] backdrop-blur-sm sm:text-[10px] sm:tracking-[0.14em]">
-                        Launch episode
-                      </span>
+              {episodes.map((episode) => {
+                const badge = episode.status === "available" ? "Now available" : "Coming soon";
+                const footer =
+                  episode.status === "available"
+                    ? "Watch on YouTube"
+                    : episode.status === "recording"
+                      ? "Recording now"
+                      : "Coming soon";
+                const card = (
+                  <>
+                    <div className="relative h-48 w-full overflow-hidden bg-[#0d1524]">
+                      <Image
+                        src="/the-glass-signal-cover.png"
+                        alt=""
+                        width={1024}
+                        height={1024}
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="h-full w-full object-cover object-[center_16%]"
+                        aria-hidden
+                      />
+                      <div className="absolute right-3 top-3 max-w-[calc(100%-1.5rem)]">
+                        <span className="inline-block rounded-[4px] border border-white/15 bg-[#0b1220]/75 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#e8dcc4] backdrop-blur-sm sm:text-[10px] sm:tracking-[0.14em]">
+                          {badge}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <div className="p-5">
-                    <p className="text-xs uppercase tracking-[0.12em] text-[#a99671]">{episode.tag}</p>
-                    <h3 className="mt-3 font-display text-[28px] leading-[1.06] tracking-[-0.02em] text-[#f7f3ea]">
-                      {episode.title}
-                    </h3>
-                    <p className="mt-3 text-[15px] leading-[1.6] text-[#c9c2b3]">{episode.teaser}</p>
-                    <p className="mt-5 text-[13px] font-medium uppercase tracking-[0.12em] text-[#8a8275]">
-                      Available at launch
-                    </p>
-                  </div>
-                </article>
-              ))}
+                    <div className="p-5">
+                      <p className="text-xs uppercase tracking-[0.12em] text-[#a99671]">{episode.tag}</p>
+                      <h3 className="mt-3 font-display text-[28px] leading-[1.06] tracking-[-0.02em] text-[#f7f3ea]">
+                        {episode.title}
+                      </h3>
+                      <p className="mt-3 text-[15px] leading-[1.6] text-[#c9c2b3]">{episode.teaser}</p>
+                      <p
+                        className={`mt-5 text-[13px] font-medium uppercase tracking-[0.12em] ${
+                          episode.status === "available" ? "text-[#d9bc81]" : "text-[#8a8275]"
+                        }`}
+                      >
+                        {footer}
+                      </p>
+                    </div>
+                  </>
+                );
+
+                if (episode.status === "available" && episode.href) {
+                  return (
+                    <a
+                      key={episode.title}
+                      href={episode.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-[8px] border border-white/12 bg-[#101a2a] overflow-hidden transition-colors hover:border-white/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b79a64]"
+                    >
+                      {card}
+                    </a>
+                  );
+                }
+
+                return (
+                  <article
+                    key={episode.title}
+                    className="rounded-[8px] border border-white/12 bg-[#101a2a] overflow-hidden"
+                  >
+                    {card}
+                  </article>
+                );
+              })}
             </div>
             <div className="mt-12 flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:items-center">
               <Link
                 href="/#newsletter"
                 className="inline-flex items-center justify-center rounded-[4px] bg-[#b79a64] px-6 py-3 text-[15px] font-semibold text-[#0b1220] hover:bg-[#c2a86f] transition-colors"
               >
-                Get the first episodes
+                Get new episodes
               </Link>
               <Link
                 href="/connect"
@@ -325,6 +391,8 @@ export default function PodcastPage() {
                 <a
                   key={`${platform.label}-subscribe`}
                   href={platform.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center rounded-[4px] border border-white/20 px-4 py-2 text-sm text-[#e3dac7] hover:bg-white/10 transition-colors"
                 >
                   {platform.label}

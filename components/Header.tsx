@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { site, brokenGlassTestLinkProps } from "@/content/site";
+import { site } from "@/content/site";
 import { BUSINESS_HOME_URL, crossSiteNav } from "@/lib/domains";
 
 const navLinks = [
@@ -11,7 +11,6 @@ const navLinks = [
   { href: "/about", label: "About" },
   { href: "/speaking", label: "Speaking" },
   { href: "/connect", label: "Connect" },
-  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Header() {
@@ -53,13 +52,12 @@ export default function Header() {
             >
               {personal.label}
             </a>
-            <a
-              href={site.brokenGlassTestUrl}
-              {...brokenGlassTestLinkProps()}
+            <Link
+              href={site.startConversationPath}
               className="inline-flex items-center justify-center rounded-[4px] bg-[#B5332E] px-[18px] py-[12px] text-[15px] font-semibold text-[#F7F5F2] hover:bg-[#A6342E] transition-colors whitespace-nowrap"
             >
-              Take the Broken Glass Test
-            </a>
+              Book a Conversation
+            </Link>
           </div>
 
           <button
@@ -103,14 +101,13 @@ export default function Header() {
               {personal.label}
             </a>
             <div className="pt-4 mt-3 border-t border-[rgba(15,23,42,0.08)]">
-              <a
-                href={site.brokenGlassTestUrl}
-                {...brokenGlassTestLinkProps()}
+              <Link
+                href={site.startConversationPath}
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full inline-flex items-center justify-center rounded-[4px] bg-[#B5332E] px-[18px] py-[12px] text-[15px] font-semibold text-[#F7F5F2] hover:bg-[#A6342E] transition-colors whitespace-nowrap"
               >
-                Take the Broken Glass Test
-              </a>
+                Book a Conversation
+              </Link>
             </div>
           </div>
         </div>
