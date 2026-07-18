@@ -26,7 +26,7 @@ export default function TwoProblemsSection() {
     >
       <div className="mx-auto max-w-6xl">
         <h2 className="max-w-4xl font-display text-3xl tracking-[-0.02em] text-authority md:text-4xl lg:text-[2.5rem]">
-          Two problems we help businesses solve
+          The Unbreakable Foundations
         </h2>
         <p className="mt-5 text-lg leading-relaxed text-metal md:text-[1.15rem] lg:max-w-none lg:whitespace-nowrap lg:text-[1.12rem] xl:text-[1.2rem]">
           Different symptoms. Same root cause: the people system is not strong enough for what the business is asking of it.
