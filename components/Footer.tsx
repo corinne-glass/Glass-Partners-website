@@ -46,6 +46,9 @@ export default function Footer() {
             >
               Connect on LinkedIn
             </Link>
+            <Link href="/signal" className="text-cloud-100 hover:text-white transition-colors">
+              SIGNAL
+            </Link>
             <Link href="/podcast" className="text-cloud-100 hover:text-white transition-colors">
               Podcast
             </Link>

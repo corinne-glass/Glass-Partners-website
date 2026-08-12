@@ -10,7 +10,7 @@ import { site } from "@/content/site";
 export const metadata: Metadata = {
   title: `Products and Services | ${site.name}`,
   description:
-    "How Glass Partners strengthens the people system behind performance — diagnostics, leadership capability, talent signal, and implementation-led support.",
+    "How Glass Partners strengthens the people system behind performance — SIGNAL employee voice assessment, diagnostics, leadership capability, talent signal, and implementation-led support.",
   alternates: { canonical: "/products" },
 };
 

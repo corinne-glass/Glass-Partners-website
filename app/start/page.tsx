@@ -4,7 +4,13 @@ import Footer from "@/components/Footer";
 import StartConversationForm from "@/components/StartConversationForm";
 import { calendlyLinkProps, site } from "@/content/site";
 
-export default function StartConversationPage() {
+type Props = {
+  searchParams?: { enquiry?: string };
+};
+
+export default function StartConversationPage({ searchParams }: Props) {
+  const enquiryType = searchParams?.enquiry?.trim() || undefined;
+
   return (
     <>
       <Header />
@@ -16,8 +22,9 @@ export default function StartConversationPage() {
               Start the conversation
             </h1>
             <p className="mt-7 max-w-3xl text-[18px] leading-[1.75] text-[#334155]">
-              If you are ready to talk, book a time. If you would rather send context first, share a few details and
-              we will come back to you.
+              {enquiryType
+                ? `You are enquiring about ${enquiryType}. Book a time, or send context first and we will come back to you.`
+                : "If you are ready to talk, book a time. If you would rather send context first, share a few details and we will come back to you."}
             </p>
 
             <div className="mt-12 grid gap-7 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
@@ -38,7 +45,7 @@ export default function StartConversationPage() {
                 </p>
               </article>
 
-              <StartConversationForm />
+              <StartConversationForm enquiryType={enquiryType} />
             </div>
 
             <div className="mt-10">

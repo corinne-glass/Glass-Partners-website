@@ -33,13 +33,13 @@ const startHereCards: HowWeHelpOfferCardProps[] = [
     },
   },
   {
-    title: "Employee Experience Diagnostic",
+    title: "SIGNAL — Employee Voice & Engagement Assessment",
     children:
-      "A practical view of how people are experiencing leadership, communication, standards, and the conditions they are being asked to perform inside.",
+      "An independently administered assessment that reveals what your people value, where the workplace experience needs to improve and what should happen next.",
     primary: {
       kind: "link",
-      href: site.startConversationPath,
-      label: "See What's Really Going On",
+      href: "/signal",
+      label: "Explore SIGNAL",
     },
   },
   {

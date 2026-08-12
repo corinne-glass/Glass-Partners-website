@@ -26,11 +26,19 @@ const initialState: FormState = {
 
 const COMPANY_SIZE_OPTIONS = ["Under 50", "51-150", "151-300", "301-500", "500+"] as const;
 
-export default function StartConversationForm() {
+type Props = {
+  /** Prefills enquiry subject / type (e.g. SIGNAL) */
+  enquiryType?: string;
+};
+
+export default function StartConversationForm({ enquiryType }: Props) {
   const [values, setValues] = useState<FormState>(initialState);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+  const subject = enquiryType?.trim()
+    ? `${enquiryType.trim()} enquiry — Glass Partners`
+    : "Start the Conversation enquiry — Glass Partners";
 
   const canSubmit = useMemo(
     () =>
@@ -62,12 +70,13 @@ export default function StartConversationForm() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: accessKey,
-          subject: "Start the Conversation enquiry — Glass Partners",
+          subject,
           from_name: values.name.trim(),
           email: values.email.trim(),
           phone: values.phone.trim() || "Not provided",
           company: values.company.trim(),
           company_size: values.companySize,
+          enquiry_type: enquiryType?.trim() || "General",
           message: values.whatIsHappening.trim() || "No additional context provided.",
         }),
       });
@@ -98,7 +107,9 @@ export default function StartConversationForm() {
         Send a quick enquiry
       </h2>
       <p className="mt-3 text-[15px] leading-[1.7] text-[#334155]">
-        For people who want to share context first.
+        {enquiryType?.trim()
+          ? `Enquiry regarding ${enquiryType.trim()}. Share context first and we will come back to you.`
+          : "For people who want to share context first."}
       </p>
 
       {status === "success" ? (
