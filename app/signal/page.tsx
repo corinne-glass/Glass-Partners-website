@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/signal/signal-report-cover.png",
-        width: 900,
-        height: 1200,
+        url: signal.hero.heroImage,
+        width: 1024,
+        height: 576,
         alt: signal.hero.heroAlt,
       },
     ],
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: signal.meta.ogTitle,
     description: signal.meta.ogDescription,
-    images: ["/images/signal/signal-report-cover.png"],
+    images: [signal.hero.heroImage],
   },
   keywords: [
     "employee engagement survey",
