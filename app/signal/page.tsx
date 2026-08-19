@@ -11,6 +11,10 @@ import SignalFiveFracturesPanel from "@/components/signal/SignalFiveFracturesPan
 import { SignalHeroCta, SignalEnquiryCta } from "@/components/signal/SignalCtas";
 import { signal } from "@/content/signal";
 import { site } from "@/content/site";
+import { BUSINESS_HOME_URL } from "@/lib/domains";
+
+const SIGNAL_PAGE_URL = `${BUSINESS_HOME_URL}/signal`;
+const SIGNAL_OG_IMAGE_URL = `${BUSINESS_HOME_URL}${signal.meta.ogImage}`;
 
 export const metadata: Metadata = {
   title: signal.meta.title,
@@ -19,15 +23,16 @@ export const metadata: Metadata = {
   openGraph: {
     title: signal.meta.ogTitle,
     description: signal.meta.ogDescription,
-    url: "https://www.glasspartners.com.au/signal",
+    url: SIGNAL_PAGE_URL,
     siteName: site.name,
     type: "website",
     images: [
       {
-        url: signal.hero.heroImage,
-        width: 1024,
-        height: 576,
-        alt: signal.hero.heroAlt,
+        url: SIGNAL_OG_IMAGE_URL,
+        width: 1200,
+        height: 630,
+        type: "image/png",
+        alt: "SIGNAL — Employee Voice & Engagement Assessment",
       },
     ],
   },
@@ -35,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: signal.meta.ogTitle,
     description: signal.meta.ogDescription,
-    images: [signal.hero.heroImage],
+    images: [SIGNAL_OG_IMAGE_URL],
   },
   keywords: [
     "employee engagement survey",

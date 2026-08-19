@@ -5,13 +5,14 @@ export const signal = {
   shortName: "SIGNAL",
   descriptor: "Employee Voice & Engagement Assessment",
   meta: {
-    title: "SIGNAL Employee Voice & Engagement Assessment",
+    title: "SIGNAL — Employee Voice & Engagement Assessment",
     description:
-      "Listen to your people properly. SIGNAL is an independently administered employee engagement assessment that reveals workplace strengths, opportunities to improve and what should happen next.",
+      "Find out what your people value, what is getting in the way and where attention is needed before disengagement, turnover or poor performance costs the business.",
     ogTitle: "SIGNAL — Employee Voice & Engagement Assessment",
     ogDescription:
-      "Find out what your people aren't telling you — before you pay for it. SIGNAL shows what is working, what is getting in the way and what deserves attention first.",
+      "Find out what your people value, what is getting in the way and where attention is needed before disengagement, turnover or poor performance costs the business.",
     canonical: "/signal",
+    ogImage: "/images/signal/signal-employee-voice-social-preview-2026.png",
   },
   hero: {
     eyebrow: "SIGNAL — EMPLOYEE VOICE & ENGAGEMENT ASSESSMENT",
