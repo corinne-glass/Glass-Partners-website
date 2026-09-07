@@ -26,6 +26,8 @@ const initial: FormState = {
   website: "",
 };
 
+const WEB3FORMS_URL = "https://api.web3forms.com/submit";
+
 const labelClass =
   "mb-1 block text-[11px] font-semibold uppercase tracking-[0.08em] text-[#d9bc81]";
 
@@ -47,6 +49,7 @@ export default function SignalReportLeadForm({
   const [submittedName, setSubmittedName] = useState("");
 
   const { form, success, cta } = signalReport;
+  const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
   useEffect(() => {
     captureUtmToSession();
@@ -75,31 +78,74 @@ export default function SignalReportLeadForm({
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Honeypot — pretend success without contacting Web3Forms.
+    if (values.website.trim()) {
+      setSubmittedName(values.firstName.trim());
+      setStatus("success");
+      return;
+    }
+
+    if (!accessKey?.trim()) {
+      setStatus("error");
+      setErrorMessage("Form is not configured yet.");
+      return;
+    }
+
     setStatus("submitting");
     setErrorMessage(null);
 
+    const firstName = values.firstName.trim();
+    const workEmail = values.workEmail.trim();
+    const company = values.company.trim();
+    const role = values.role.trim();
+    const employeeCount = values.employeeCount;
+
     try {
-      const response = await fetch("/api/signal-report", {
+      // Reuse the proven browser → Web3Forms pattern from StartConversationForm /
+      // NewsletterModal. Server-side Vercel → Web3Forms was failing with a generic
+      // network error; browser submissions are the working path on this site.
+      const response = await fetch(WEB3FORMS_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          firstName: values.firstName.trim(),
-          workEmail: values.workEmail.trim(),
-          company: values.company.trim(),
-          role: values.role.trim(),
-          employeeCount: values.employeeCount,
-          website: values.website,
+          access_key: accessKey,
+          subject: "SIGNAL sample report request — Glass Partners",
+          from_name: firstName,
+          email: workEmail,
+          first_name: firstName,
+          work_email: workEmail,
+          company,
+          role,
+          employee_count: employeeCount,
+          message: [
+            "SIGNAL sample report request",
+            `Role: ${role}`,
+            `Company: ${company}`,
+            `Employees: ${employeeCount}`,
+            `Lead source: ${form.leadSource}`,
+            `Landing page: ${form.landingPage}`,
+          ].join("\n"),
           lead_source: form.leadSource,
           landing_page: form.landingPage,
           referring_url: typeof document !== "undefined" ? document.referrer || "" : "",
-          ...utm,
+          timestamp: new Date().toISOString(),
+          utm_source: utm.utm_source || "",
+          utm_medium: utm.utm_medium || "",
+          utm_campaign: utm.utm_campaign || "",
+          utm_term: utm.utm_term || "",
+          utm_content: utm.utm_content || "",
         }),
       });
 
-      const data = (await response.json()) as { success?: boolean; message?: string };
+      const data = (await response.json()) as {
+        success?: boolean;
+        message?: string;
+        body?: { message?: string };
+      };
 
       if (response.ok && data.success) {
-        setSubmittedName(values.firstName.trim());
+        setSubmittedName(firstName);
         setStatus("success");
         trackEvent("signal_report_form_submit", {
           utm_source: utm.utm_source,
@@ -111,7 +157,9 @@ export default function SignalReportLeadForm({
       }
 
       setStatus("error");
-      setErrorMessage(data.message || "Something went wrong. Please try again.");
+      setErrorMessage(
+        data.message || data.body?.message || "Something went wrong. Please try again.",
+      );
     } catch {
       setStatus("error");
       setErrorMessage("Network error. Please try again.");
