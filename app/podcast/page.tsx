@@ -24,13 +24,23 @@ const contentPillars = [
 const FEATURED_EPISODE_URL = "https://youtu.be/tc1GjrU2TmQ";
 const FEATURED_EPISODE_EMBED = "https://www.youtube.com/embed/tc1GjrU2TmQ";
 
-const episodes = [
+type EpisodeStatus = "available" | "recording" | "comingSoon";
+
+type Episode = {
+  title: string;
+  teaser: string;
+  tag: string;
+  status: EpisodeStatus;
+  href?: string;
+};
+
+const episodes: Episode[] = [
   {
     title: "Why Employees Stop Speaking Up: The 6-Step Fix",
     teaser:
       "Why good employees go quiet — and a six-step fix to restore honest feedback before silence becomes turnover.",
     tag: "Leadership",
-    status: "available" as const,
+    status: "available",
     href: "https://youtu.be/WTHO4dDzUYE",
   },
   {
@@ -38,7 +48,7 @@ const episodes = [
     teaser:
       "Why keeping the wrong person costs more than an empty seat — and how to tell if the system failed them or they cannot meet the standard.",
     tag: "Leadership",
-    status: "available" as const,
+    status: "available",
     href: "https://youtu.be/AxZh62uuesQ",
   },
   {
@@ -46,14 +56,14 @@ const episodes = [
     teaser:
       "Why softening feedback breaks trust — and how C.L.E.A.R feedback sets a standard people can actually follow.",
     tag: "Leadership",
-    status: "available" as const,
+    status: "available",
     href: "https://youtu.be/mtkjZTdWRjQ",
   },
   {
     title: "Your Business Is Stuck. Here's the 5 Step RESET",
     teaser: "A five-step RESET for businesses that have stalled.",
     tag: "Growth",
-    status: "available" as const,
+    status: "available",
     href: "https://youtu.be/aPNZRtYntZk",
   },
   {
@@ -61,7 +71,7 @@ const episodes = [
     teaser:
       "The problems that look like people, process or market issues — and the leadership gaps underneath them.",
     tag: "Growth",
-    status: "available" as const,
+    status: "available",
     href: "https://youtu.be/MD06g1ObrEU",
   },
   {
@@ -69,7 +79,7 @@ const episodes = [
     teaser:
       "Why AI won't fix broken fundamentals — and the five business problems to solve before productivity tools can help.",
     tag: "Growth",
-    status: "comingSoon" as const,
+    status: "comingSoon",
   },
 ];
 
