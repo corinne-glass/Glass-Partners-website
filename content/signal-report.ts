@@ -11,7 +11,7 @@ export const signalReport = {
     ogDescription:
       "See how SIGNAL turns confidential employee voice into clear business priorities. Request the illustrative SIGNAL Employee Voice & Engagement Assessment report from Glass Partners.",
     canonical: "/signal-report",
-    ogImage: "/images/signal/signal-report-cover.png",
+    ogImage: "/images/signal/signal-employee-voice-social-preview-2026.png",
   },
   header: {
     secondaryLink: "Already interested? Talk to us about SIGNAL →",
