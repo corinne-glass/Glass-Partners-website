@@ -26,6 +26,37 @@ const FEATURED_EPISODE_EMBED = "https://www.youtube.com/embed/tc1GjrU2TmQ";
 
 const episodes = [
   {
+    title: "Why Employees Stop Speaking Up: The 6-Step Fix",
+    teaser:
+      "Why good employees go quiet — and a six-step fix to restore honest feedback before silence becomes turnover.",
+    tag: "Leadership",
+    status: "available" as const,
+    href: "https://youtu.be/WTHO4dDzUYE",
+  },
+  {
+    title: "Why Keeping the Wrong Employee Costs More Than Losing Them",
+    teaser:
+      "Why keeping the wrong person costs more than an empty seat — and how to tell if the system failed them or they cannot meet the standard.",
+    tag: "Leadership",
+    status: "available" as const,
+    href: "https://youtu.be/AxZh62uuesQ",
+  },
+  {
+    title: "Stop Softening the Truth: How C.L.E.A.R Feedback Builds Trust",
+    teaser:
+      "Why softening feedback breaks trust — and how C.L.E.A.R feedback sets a standard people can actually follow.",
+    tag: "Leadership",
+    status: "available" as const,
+    href: "https://youtu.be/mtkjZTdWRjQ",
+  },
+  {
+    title: "Your Business Is Stuck. Here's the 5 Step RESET",
+    teaser: "A five-step RESET for businesses that have stalled.",
+    tag: "Growth",
+    status: "available" as const,
+    href: "https://youtu.be/aPNZRtYntZk",
+  },
+  {
     title: "5 Business Problems You're Misdiagnosing!",
     teaser:
       "The problems that look like people, process or market issues — and the leadership gaps underneath them.",
@@ -34,37 +65,10 @@ const episodes = [
     href: "https://youtu.be/MD06g1ObrEU",
   },
   {
-    title: "Your Business Is Stuck. Here's The Five-Step RESET",
-    teaser: "A five-step RESET for businesses that have stalled.",
+    title: "AI Isn't Improving Productivity: Fix These 5 Business Problems First",
+    teaser:
+      "Why AI won't fix broken fundamentals — and the five business problems to solve before productivity tools can help.",
     tag: "Growth",
-    status: "recording" as const,
-  },
-  {
-    title: "Leadership Is Boring. That's Why Most Leaders Get It Wrong",
-    teaser:
-      "RESET only works when leaders repeat standards and reviews after the initial excitement disappears.",
-    tag: "Leadership",
-    status: "comingSoon" as const,
-  },
-  {
-    title: "Let Them Leave: The Cost of Keeping the Wrong People",
-    teaser:
-      "RESET reveals whether the system blocked the person or whether the person cannot or will not meet a fair standard.",
-    tag: "Leadership",
-    status: "comingSoon" as const,
-  },
-  {
-    title: "Leadership Is Sales: Stop Talking If You Want Influence",
-    teaser:
-      "Leaders must create commitment to the chosen thirty-day priority rather than simply announcing it.",
-    tag: "Influence",
-    status: "comingSoon" as const,
-  },
-  {
-    title: "Nice Leaders Create Expensive Problems",
-    teaser:
-      "A leader may provide clarity and enablement but still avoid the required follow-through.",
-    tag: "Leadership",
     status: "comingSoon" as const,
   },
 ];
