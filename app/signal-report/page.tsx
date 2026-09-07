@@ -29,10 +29,10 @@ export const metadata: Metadata = {
     images: [
       {
         url: OG_IMAGE_URL,
-        width: 900,
-        height: 1200,
+        width: 1200,
+        height: 630,
         type: "image/png",
-        alt: "SIGNAL Employee Voice & Engagement Assessment report",
+        alt: "SIGNAL — Employee Voice & Engagement Assessment",
       },
     ],
   },
